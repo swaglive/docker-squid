@@ -45,8 +45,8 @@ jobs:
           swaglive/squid
           ghcr.io/swaglive/squid
         tags: |-
-          type=semver,pattern={{major}}.{{minor}},value=${{ matrix.version }}
-          type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{ matrix.version }}
+          type=semver,pattern={{major}}.{{minor}},value=${{ matrix.version }}.0
+          type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{ matrix.version }}.0
 
     - name: Build
       uses: docker/build-push-action@v3
