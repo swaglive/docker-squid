@@ -46,7 +46,7 @@ RUN         ./configure \
                 # --enable-heimdal \
                 # --enable-delay-pools \
                 # --enable-arp-acl \
-                # --enable-openssl \
+                --enable-openssl \
                 # --enable-ssl-crtd \
                 # --enable-security-cert-generators="file" \
                 # --enable-ident-lookups \
@@ -67,7 +67,7 @@ RUN         ./configure \
                 # --disable-dependency-tracking \
                 # --with-large-files \
                 # --with-default-user=squid \
-                # --with-openssl \
+                --with-openssl \
                 # --with-pidfile=/var/run/squid/squid.pid 
                 && \
             make -j 32 && \
@@ -99,10 +99,6 @@ EXPOSE      3128/tcp
 ENTRYPOINT  ["/init", "squid"]
 CMD         ["--foreground", "-Y", "-C", "-d", "1"]
 
-# RUN     useradd -ms /bin/bash newuser
-# RUN     deluser squid 2>/dev/null; delgroup squid 2>/dev/null; \
-# 	        addgroup -S squid -g 3128 && adduser -S -u 3128 -G squid -g squid -H -D -s /bin/false -h /var/cache/squid squid
-
 RUN         apk add --no-cache --virtual .run-deps \
                 libstdc++ \
                 libcap \
@@ -118,6 +114,9 @@ COPY        --from=squid /usr/lib/squid/ /usr/lib/squid/
 COPY        --from=squid /usr/share/squid/ /usr/share/squid/
 COPY        --from=squid /usr/sbin/squid /usr/sbin/squid
 
+# RUN     useradd -ms /bin/bash newuser
+# 	        addgroup -S squid -g 3128 && adduser -S -u 3128 -G squid -g squid -H -D -s /bin/false -h /var/cache/squid squid
+
 # RUN     install -d -o squid -g squid \
 #             /var/cache/squid \
 #             /var/log/squid \
@@ -126,4 +125,4 @@ COPY        --from=squid /usr/sbin/squid /usr/sbin/squid
 # 	    install -d -m 755 -o squid -g squid \
 #             /etc/squid/conf.d
 
-USER    squid
+# USER        squid
