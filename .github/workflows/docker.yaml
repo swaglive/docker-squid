@@ -50,8 +50,12 @@ jobs:
 
     - name: Build
       uses: docker/build-push-action@v3
+      id: build
       with:
         context: .
+        build-args: |
+          version=${{ matrix.version }}
+        push: ${{ !steps.config.outputs.skip-push-to-registry }}
         labels: ${{ steps.meta.outputs.labels }}
         tags: ${{ steps.meta.outputs.tags }}
         cache-from: type=gha

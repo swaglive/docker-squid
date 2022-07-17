@@ -46,28 +46,28 @@ RUN         ./configure \
                 # --enable-heimdal \
                 # --enable-delay-pools \
                 # --enable-arp-acl \
-                --enable-openssl \
-                --enable-ssl-crtd \
+                # --enable-openssl \
+                # --enable-ssl-crtd \
                 # --enable-security-cert-generators="file" \
-                --enable-ident-lookups \
+                # --enable-ident-lookups \
                 # --enable-cache-digests \
-                --enable-referer-log \
-                --enable-useragent-log \
-                --enable-async-io \
+                # --enable-referer-log \
+                # --enable-useragent-log \
+                # --enable-async-io \
                 # --enable-truncate \
                 # --enable-arp-acl \
                 # --enable-htcp \
                 # --enable-carp \
                 # --enable-epoll \
-                --enable-follow-x-forwarded-for \
-                --enable-storeio="diskd rock" \
-                --enable-ipv6 \
+                # --enable-follow-x-forwarded-for \
+                # --enable-storeio="diskd rock" \
+                # --enable-ipv6 \
                 # --enable-translation \
                 # --disable-snmp \
                 # --disable-dependency-tracking \
                 # --with-large-files \
                 # --with-default-user=squid \
-                --with-openssl \
+                # --with-openssl \
                 # --with-pidfile=/var/run/squid/squid.pid 
                 && \
             make -j 16 && \
