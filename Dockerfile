@@ -66,7 +66,7 @@ RUN         ./configure \
                 # --disable-snmp \
                 # --disable-dependency-tracking \
                 # --with-large-files \
-                # --with-default-user=squid \
+                --with-default-user=squid \
                 --with-openssl \
                 # --with-pidfile=/var/run/squid/squid.pid 
                 && \
@@ -97,7 +97,9 @@ VOLUME      ["/var/cache/squid"]
 EXPOSE      3128/tcp
 
 ENTRYPOINT  ["/init", "squid"]
-CMD         ["--foreground", "-Y", "-C", "-d", "1"]
+CMD         ["-N", "-d", "1"]
+# CMD         ["--foreground", "-d", "1"]
+# CMD         ["--foreground", "-Y", "-C", "-d", "1"]
 
 RUN         apk add --no-cache --virtual .run-deps \
                 libstdc++ \
@@ -114,15 +116,12 @@ COPY        --from=squid /usr/lib/squid/ /usr/lib/squid/
 COPY        --from=squid /usr/share/squid/ /usr/share/squid/
 COPY        --from=squid /usr/sbin/squid /usr/sbin/squid
 
-# RUN     useradd -ms /bin/bash newuser
-# 	        addgroup -S squid -g 3128 && adduser -S -u 3128 -G squid -g squid -H -D -s /bin/false -h /var/cache/squid squid
+RUN         install -d -o squid -g squid \
+                /var/cache/squid \
+                /var/log/squid \
+                /var/run/squid && \
+            chmod +x /usr/lib/squid/* && \
+            install -d -m 755 -o squid -g squid \
+                /etc/squid/conf.d
 
-# RUN     install -d -o squid -g squid \
-#             /var/cache/squid \
-#             /var/log/squid \
-#             /var/run/squid && \
-# 	    chmod +x /usr/lib/squid/* && \
-# 	    install -d -m 755 -o squid -g squid \
-#             /etc/squid/conf.d
-
-# USER        squid
+USER        squid
