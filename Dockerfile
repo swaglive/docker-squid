@@ -70,7 +70,7 @@ RUN         ./configure \
                 # --with-openssl \
                 # --with-pidfile=/var/run/squid/squid.pid 
                 && \
-            make -j 16 && \
+            make -j 32 && \
             make install
 
 ###
