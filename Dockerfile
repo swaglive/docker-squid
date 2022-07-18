@@ -47,13 +47,13 @@ RUN         ./configure \
                 # --enable-delay-pools \
                 # --enable-arp-acl \
                 --enable-openssl \
-                # --enable-ssl-crtd \
+                --enable-ssl-crtd \
                 # --enable-security-cert-generators="file" \
                 # --enable-ident-lookups \
                 # --enable-cache-digests \
                 # --enable-referer-log \
                 # --enable-useragent-log \
-                # --enable-async-io \
+                --enable-async-io \
                 # --enable-truncate \
                 # --enable-arp-acl \
                 # --enable-htcp \
@@ -61,7 +61,7 @@ RUN         ./configure \
                 # --enable-epoll \
                 # --enable-follow-x-forwarded-for \
                 # --enable-storeio="diskd rock" \
-                # --enable-ipv6 \
+                --enable-ipv6 \
                 # --enable-translation \
                 # --disable-snmp \
                 # --disable-dependency-tracking \
