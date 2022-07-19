@@ -34,10 +34,10 @@ RUN         ./configure \
                 --localstatedir=/var \
                 --with-logdir=/var/log/squid \
                 # --enable-removal-policies="lru,heap" \
-                # --enable-auth-digest \
+                --enable-auth-digest \
                 # --enable-auth-basic="getpwnam,NCSA,DB" \
                 # --enable-basic-auth-helpers="DB" \
-                # --enable-epoll \
+                --enable-epoll \
                 # --enable-external-acl-helpers="file_userip,unix_group,wbinfo_group" \
                 # --enable-auth-ntlm="fake" \
                 # --enable-auth-negotiate="kerberos,wrapper" \
@@ -50,25 +50,23 @@ RUN         ./configure \
                 --enable-ssl-crtd \
                 # --enable-security-cert-generators="file" \
                 # --enable-ident-lookups \
-                # --enable-cache-digests \
-                # --enable-referer-log \
-                # --enable-useragent-log \
+                --enable-cache-digests \
+                --enable-referer-log \
+                --enable-useragent-log \
                 --enable-async-io \
                 # --enable-truncate \
                 # --enable-arp-acl \
                 # --enable-htcp \
                 # --enable-carp \
-                # --enable-epoll \
                 # --enable-follow-x-forwarded-for \
                 # --enable-storeio="diskd rock" \
                 --enable-ipv6 \
                 # --enable-translation \
                 # --disable-snmp \
                 # --disable-dependency-tracking \
-                # --with-large-files \
+                --with-large-files \
                 --with-default-user=squid \
                 --with-openssl \
-                # --with-pidfile=/var/run/squid/squid.pid 
                 && \
             make -j 32 && \
             make install
