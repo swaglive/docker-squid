@@ -93,13 +93,10 @@ ENV         S6_BEHAVIOUR_IF_STAGE2_FAILS=2
 ENV         S6_KEEP_ENV=1
 ENV         KUBECONFIG=/.kube/config
 
-VOLUME      ["/var/cache/squid"]
 EXPOSE      3128/tcp
 
 ENTRYPOINT  ["/init", "squid"]
-CMD         ["-N", "-d", "1"]
-# CMD         ["--foreground", "-d", "1"]
-# CMD         ["--foreground", "-Y", "-C", "-d", "1"]
+CMD         ["-NYC"]
 
 RUN         apk add --no-cache --virtual .run-deps \
                 libstdc++ \
