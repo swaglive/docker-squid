@@ -44,7 +44,7 @@ RUN         ./configure \
                 # --enable-silent-rules \
                 # --disable-mit \
                 # --enable-heimdal \
-                # --enable-delay-pools \
+                --enable-delay-pools \
                 # --enable-arp-acl \
                 --enable-openssl \
                 --enable-ssl-crtd \
