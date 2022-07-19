@@ -1,2 +1,3 @@
-#!/command/with-contenv sh    
-test -d /var/cache/squid/ssl_db || /usr/lib/squid/security_file_certgen -c -s /var/cache/squid/ssl_db -M 4MB
+#!/command/with-contenv sh
+/usr/lib/squid/security_file_certgen -c -s /var/cache/squid/ssl_db -M 4MB
+# test -d /var/cache/squid/ssl_db || /usr/lib/squid/security_file_certgen -c -s /var/cache/squid/ssl_db -M 4MB
