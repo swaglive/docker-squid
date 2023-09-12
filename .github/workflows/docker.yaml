@@ -50,7 +50,7 @@ jobs:
           type=semver,pattern={{major}}.{{minor}}.{{patch}},value=${{ matrix.version }}.0
 
     - name: Build
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v5
       id: build
       with:
         context: .
